@@ -10,10 +10,10 @@ data "template_file" "startup_script" {
 
 
 resource "google_compute_instance" "bastion" {
-  name         = "bastion"
+  name         = "slave"
   machine_type = "e2-medium"
   zone         = "us-west2-a"
-  tags         = ["bastionhost"]
+  tags         = ["slave"]
 
   boot_disk {
     initialize_params {
@@ -24,9 +24,8 @@ resource "google_compute_instance" "bastion" {
   network_interface {
     network    = module.network.vpc_name
     subnetwork = module.network.public_subnet_name
-
+    access_config {}
   }
 
   metadata_startup_script = data.template_file.startup_script.rendered
-
 }
