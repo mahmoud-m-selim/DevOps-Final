@@ -1,0 +1,7 @@
+project             = "mselim"
+region              = "us-west2"
+public_subnet_cidr  = "10.0.0.0/24"
+private_subnet_cidr = "10.0.1.0/24"
+pods_cidr           = "10.48.0.0/14"
+services_cidr       = "10.52.0.0/20"
+master_cidr         = "172.16.0.0/28"
